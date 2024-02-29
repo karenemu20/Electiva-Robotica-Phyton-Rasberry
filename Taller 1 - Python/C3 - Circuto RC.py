@@ -24,8 +24,8 @@ def main():
 
     # Graficar
     plt.figure(figsize=(10, 6))
-    plt.plot(tiempo, carga, label='Carga', color='blue')
-    plt.plot(tiempo, descarga, label='Descarga', color='red')
+    plt.plot(tiempo, carga, label='Carga', color='green')
+    plt.plot(tiempo, descarga, label='Descarga', color='blue')
     plt.title('Carga y Descarga en un Circuito RC')
     plt.xlabel('Tiempo (s)')
     plt.ylabel('Voltaje (V)')
