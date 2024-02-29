@@ -26,21 +26,21 @@ def graficar_respuesta(t, y, tipo):
     plt.show()
 
 def main():
-    # Solicitar al usuario los coeficientes
     w_n = float(input("Ingrese la frecuencia natural (w_n) del sistema: "))
     zeta = float(input("Ingrese el coeficiente de amortiguamiento (zeta) del sistema: "))
+    K = float(input("Ingrese la ganancia (K) del sistema: "))
 
-    # Calcular la función de transferencia
+    # función de transferencia
     num, den = funcion_transferencia_segundo_orden(w_n, zeta)
+    sys = signal.TransferFunction(K * num, den)
 
-    # Determinar el tipo de sistema
+    # tipo de sistema
     tipo = tipo_sistema(zeta)
     print(f"El sistema es: {tipo}")
 
-    # Graficar la respuesta del sistema en el tiempo
+    # respuesta del sistema
     t = np.linspace(0, 20, 1000)
-    sys = (num, den)
-    t, y = signal.step(sys, T=t)
+    _, y, _ = signal.lsim(sys, T=t)
     graficar_respuesta(t, y, tipo)
 
 if __name__ == "__main__":
